@@ -1,0 +1,165 @@
+﻿@model Domain.DTO.Account.AccountsParams
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Listado de Cuentas</h1>
+    </div>
+
+    <div class="col-md-6">
+        <button class="btn btn-primary buttonTitle" onclick="nuevaAccounts()">
+            <i class="fas fa-plus-square"></i>
+            Nueva Cuenta
+        </button>
+    </div>
+</div>
+
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="tblAccounts" class="table " style="width:100% !important">
+            <thead class="table-nova">
+                <tr>
+                    <th scope="col">Codigo Cliente</th>
+                    <th scope="col">Tipo Identificación</th>
+                    <th scope="col">Nit Cliente</th>
+                    <th scope="col">Nombre Cliente</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="bodyAccounts">
+            </tbody>
+
+        </table>
+    </div>
+</div>
+@*modal detalle cuenta*@
+<div class="modal fade" id="modalAccounts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" role="dialog" aria-labelledby="modalArticuloLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="idTituloModalAccounts">Detalle Cuenta</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="border p-3">
+                        <div class="form-group row">
+                            <h2 class="text-info pl-3"> Nueva Cuenta</h2>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="CodCli" class="form-label">Codigo Cliente <strong class="asterisco">*</strong></label>
+                                    <input asp-for="CodCli" class="form-control" id="txtCodCli" readonly />
+                                    <span asp-validation-for="CodCli" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="TipIde" class="form-label">Tipo Identificación <strong class="asterisco">*</strong></label>
+                                    <input asp-for="TipIde" class="form-control" id="txtTipIde" readonly />
+
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="NitCli" class="form-label">Nit Cliente <strong class="asterisco">*</strong></label>
+                                    <input asp-for="NitCli" class="form-control" id="txNitCli" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="NomCli" class="form-label">Nombre Cliente <strong class="asterisco">*</strong></label>
+                                    <input asp-for="NomCli" class="form-control" id="txtNomCli" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Ap1Cli" class="form-label">Apellido Uno</label>
+                                    <input asp-for="Ap1Cli" class="form-control" id="txtAp1Cli" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Nom1Cli" class="form-label">Nombre Uno </label>
+                                    <input asp-for="Nom1Cli" class="form-control" id="txtNom1Cli" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="EMail" class="form-label">Email <strong class="asterisco">*</strong></label>
+                                    <input asp-for="EMail" class="form-control" id="txtEmail" readonly type="email" />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="TipPer" class="form-label">Tipo Persona <strong class="asterisco">*</strong></label>
+                                    <input asp-for="TipPer" class="form-control" id="txtTipPer" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="CodCiu" class="form-label">Codigo Ciudad <strong class="asterisco">*</strong></label>
+                                    <input asp-for="CodCiu" class="form-control" id="txtCodCiu" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="CodDep" class="form-label">Código Departamento <strong class="asterisco">*</strong></label>
+                                    <input asp-for="CodDep" class="form-control" id="txtCodDep" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="CodPai" class="form-label">Código País <strong class="asterisco">*</strong></label>
+                                    <input asp-for="CodPai" class="form-control" id="txtCodPai" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Di1Cli" class="form-label">Dirección Uno</label>
+                                    <input asp-for="Di1Cli" class="form-control" id="txtDi1Cli" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Di2Cli" class="form-label">Dirección Dos</label>
+                                    <input asp-for="Di2Cli" class="form-control" id="txtDi2Cli" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="Te1Cli" class="form-label">Telefono Uno</label>
+                                    <input asp-for="Te1Cli" class="form-control" id="txtTe1Cli" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="TipCli" class="form-label">Tipo Cliente <strong class="asterisco">*</strong></label>
+                                    <input asp-for="TipCli" class="form-control" id="txtTipCli" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="PagWeb" class="form-label">Pagina Web</label>
+                                    <input asp-for="PagWeb" class="form-control" id="txtPagWeb" readonly />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="FecIng" class="form-label">Fecha Ingreso <strong class="asterisco">*</strong></label>
+                                    <input asp-for="FecIng" class="form-control" id="txtFechIng" readonly type="date" />
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label asp-for="CodCliExtr" class="form-label">Codigo Cliente Externo</label>
+                                    <input asp-for="CodCliExtr" class="form-control" id="txtCodCliExtr" readonly />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <i class="fas fa-window-close"></i>
+                    Regresar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+    <script src="~/js/accounts.js"></script>
+}

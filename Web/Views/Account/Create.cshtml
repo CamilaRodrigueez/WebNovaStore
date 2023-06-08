@@ -1,0 +1,122 @@
+﻿@model Domain.DTO.Account.AccountsParams
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="row">
+    <div class="col-md-9 offset-md-2">
+        <form method="post" action="Create">
+            <div class="border p-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <h2 class="text-info pl-3"> Nueva Cuenta</h2>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="CodCli" class="form-label">Codigo Cliente <strong class="asterisco">*</strong></label>
+                            <input asp-for="CodCli" class="form-control" required id="txtCodCli" />
+                            <span asp-validation-for="CodCli" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="TipIde" class="form-label">Tipo Identificación <strong class="asterisco">*</strong></label>
+                            <input asp-for="TipIde" class="form-control" required id="txtTipIde" />
+                            <span asp-validation-for="TipIde" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="NitCli" class="form-label">Nit Cliente <strong class="asterisco">*</strong></label>
+                            <input asp-for="NitCli" class="form-control" required id="txtNitCli" />
+                            <span asp-validation-for="NitCli" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="NomCli" class="form-label">Nombre Cliente <strong class="asterisco">*</strong></label>
+                            <input asp-for="NomCli" class="form-control" required id="txtNomCli" />
+                            <span asp-validation-for="NomCli" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="Ap1Cli" class="form-label">Apellido Uno</label>
+                            <input asp-for="Ap1Cli" class="form-control" id="txtAp1Cli" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="Nom1Cli" class="form-label">Nombre Uno </label>
+                            <input asp-for="Nom1Cli" class="form-control" id="txtNom1Cli" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="EMail" class="form-label">Email <strong class="asterisco">*</strong></label>
+                            <input asp-for="EMail" class="form-control" id="txtEMail" required type="email" />
+                            <span asp-validation-for="EMail" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="TipPer" class="form-label">Tipo Persona <strong class="asterisco">*</strong></label>
+                            <input asp-for="TipPer" class="form-control" id="txtTipPer" required />
+                            <span asp-validation-for="TipPer" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="CodCiu" class="form-label">Codigo Ciudad <strong class="asterisco">*</strong></label>
+                            <input asp-for="CodCiu" class="form-control" id="txtCodCiu" required />
+                            <span asp-validation-for="CodCiu" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="CodDep" class="form-label">Código Departamento <strong class="asterisco">*</strong></label>
+                            <input asp-for="CodDep" class="form-control" id="txtCodDep" required />
+                            <span asp-validation-for="CodDep" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="CodPai" class="form-label">Código País <strong class="asterisco">*</strong></label>
+                            <input asp-for="CodPai" class="form-control" id="txtCodPai" required />
+                            <span asp-validation-for="CodPai" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="Di1Cli" class="form-label">Dirección Uno</label>
+                            <input asp-for="Di1Cli" class="form-control" id="txtDi1Cli" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="Di2Cli" class="form-label">Dirección Dos</label>
+                            <input asp-for="Di2Cli" class="form-control" id="txtDi2Cli" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="Te1Cli" class="form-label">Telefono Uno</label>
+                            <input asp-for="Te1Cli" class="form-control" id="txtTe1Cli" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="TipCli" class="form-label">Tipo Cliente <strong class="asterisco">*</strong></label>
+                            <input asp-for="TipCli" class="form-control" required id="txtTipCli" />
+                            <span asp-validation-for="TipCli" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label asp-for="PagWeb" class="form-label">Pagina Web</label>
+                            <input asp-for="PagWeb" class="form-control" id="txtPagWeb" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="FecIng" class="form-label">Fecha Ingreso <strong class="asterisco">*</strong></label>
+                            <input asp-for="FecIng" class="form-control" id="txtFechIng" required type="date" />
+                            <span asp-validation-for="FecIng" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label asp-for="CodCliExtr" class="form-label">Dirección Uno</label>
+                            <input asp-for="CodCliExtr" class="form-control" id="txtCodCliExtr" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="d-grid grap-2 d-md-block">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a asp-controller="Account" asp-action="Index" class="btn btn-secondary">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
