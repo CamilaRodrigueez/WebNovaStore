@@ -25,15 +25,19 @@ namespace Domain.Services
         public List<ConsultProductDto> GetAllProduts()
         {
             IEnumerable<ProductEntity> productEntities = _unitOfWork.ProductRepository.GetAll();
-
-            List<ConsultProductDto> products = productEntities.Select(x => new ConsultProductDto()
+            List<ConsultProductDto> products = new List<ConsultProductDto>();
+            if (productEntities.Any())
             {
-                Code = x.Code,
-                Count = x.Count,
-                Id = x.Id,
-                Price = x.Price,
-                ProductName = x.ProductName
-            }).ToList();
+                products = productEntities.Select(x => new ConsultProductDto()
+                {
+                    Code = x.Code,
+                    Count = x.Count,
+                    Id = x.Id,
+                    Price = x.Price,
+                    ProductName = x.ProductName
+                }).ToList();
+            }
+            
 
             return products;
         }

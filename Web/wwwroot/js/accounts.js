@@ -37,11 +37,11 @@ function loadGrid(data) {
         var table = $('#tblAccounts').DataTable();
         table.destroy();
         cargarGridAccounts(data);
-        llenarGridDataTable('tblAccounts');
+        fillDataTable('tblAccounts');
     }
     else {
         cargarGridAccounts(data);
-        llenarGridDataTable('tblAccounts');
+        fillDataTable('tblAccounts');
     }
 }
 
@@ -59,7 +59,7 @@ function cargarGridAccounts(data) {
                                     <th> `+ data[i].nomCli + `</th>
                                     <th> `+ data[i].eMail + `</th>
                         <td>
-                                    <button  class="btn btn-info" onclick="detailAccount(`+ data[i].codCli + `)"><i class="fa-solid fa-eye"></i> Detalle</button>
+                                    <button  class="btn btn-info" onclick="detailAccount(`+ data[i].codCli + `)"><i class="fas fa-eye"></i> Detalle</button>
                          </td>
                         </tr>
                          `;

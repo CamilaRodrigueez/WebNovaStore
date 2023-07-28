@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Core.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230608025305_alterTableInvoice_3")]
-    partial class alterTableInvoice_3
+    [Migration("20230728155728_Initialmigration")]
+    partial class Initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
